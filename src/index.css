@@ -45,17 +45,22 @@ ul {
     margin: 0;
     align-items: center;
     justify-content: center;
-    height: 90vh;
+    height: 100vh;
     display: flex;
-    overflow: hidden;
-    flex-direction: column;
+    /* overflow: hidden; */
+    /* flex-direction: column; */
 }
 
 .game {
+    /* position: absolute; */
+    /* margin: auto; */
     display: flex;
     flex-direction: row;
+    /* width: 100%;
+    justify-content: center; */
 }
 
 .game-info {
+    /* position: relative; */
     margin-left: 20px;
 }
