@@ -1,6 +1,5 @@
 import { React } from "react";
 import Square from "./Square";
-import { useState } from "react";
 
 const Board = (props) => {
     //hook state

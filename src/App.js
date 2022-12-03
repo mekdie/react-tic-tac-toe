@@ -33,11 +33,33 @@ function App() {
     //filling up the history with array of objects of the current board condition
     const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
     const [xTurn, setXTurn] = useState(true);
+    const [stepNumber, setStepNumber] = useState(0);
 
     const currentHistory = history;
-    const current = currentHistory[currentHistory.length - 1];
+    const current = currentHistory[stepNumber];
+    // const current = currentHistory[stepNumber];
 
     const winner = calculateWinner(current.squares);
+
+    //jump to moves
+    const jumpTo = (step) => {
+        setStepNumber(step);
+        setXTurn(step % 2 === 0);
+    };
+
+    const moves = currentHistory.map((step, move) => {
+        //move is the current index while step is the value
+        //so 0 is the initial move (game start)
+        // 1 is the first move and so on....
+        const desc = move ? "Go to move #" + move : "Go to game start";
+
+        // For each move in the tic-tac-toe game’s history, we create a list item <li> which contains a button <button>. The button has a onClick handler which calls a method called this.jumpTo(). We haven’t implemented the jumpTo() method yet.
+        return (
+            <li key={move}>
+                <button onClick={() => jumpTo(move)}> {desc}</button>
+            </li>
+        );
+    });
 
     let status;
     if (winner) {
@@ -48,7 +70,14 @@ function App() {
 
     //handling click
     const handleClick = (i) => {
-        const squares = current.squares.slice(); //make a copy of the every move (squares object) inside
+        //this is to ensure if we “go back in time” and then make a new move from that point, we throw away all the “future” history that would now be incorrect
+        const innerHistory = history.slice(0, stepNumber + 1); //make a copy of array from index 0 to x + 1 (e.g. if 0 to 4, then copy element from 0-3)
+
+        const innerCurrent = innerHistory[innerHistory.length - 1];
+
+        const squares = innerCurrent.squares.slice(); //make a copy of the every move (squares object) inside
+
+        // console.log(squares);
 
         // //immutability by creating a copy of squares array
         // const newSquares = squares.slice(); //slice is a function to take portions of an array, in this case it takes all current array inside squares state
@@ -60,7 +89,8 @@ function App() {
         }
         squares[i] = xTurn ? "X" : "O";
 
-        setHistory(currentHistory.concat([{ squares: squares }]));
+        setStepNumber(innerHistory.length);
+        setHistory(innerHistory.concat([{ squares: squares }]));
         setXTurn(!xTurn);
     };
 
@@ -76,7 +106,7 @@ function App() {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <ol>{/* TODO */}</ol>
+                    <ol>{moves}</ol>
                 </div>
             </div>
         </div>
