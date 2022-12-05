@@ -1,8 +1,8 @@
-# Tic-Tac-Toe Game built with React (with additional features / ideas!)
+# Tic-Tac-Toe Game built with React (with Extensions!)
 
 This project was based on Official React Tutorial by [Reactjs.org](https://reactjs.org/tutorial/tutorial.html).
 
-Additional features/ideas reference
+Additional features/ideas (Extensions) [reference](https://reactjs.org/tutorial/tutorial.html#wrapping-up)
 
 ## Version Changelog
 
@@ -30,11 +30,11 @@ Additional features/ideas reference
 
 -   Implement Time Travel to undo / travel previous moves
 -   **_\*Bug found: the board is moving around when the next player indicator changes_**
--   If have extra time to practice React skills, in the next versions (0.4 onwards) the game will be updated with these ideas to improve game systems that could be made which are listed in order of increasing difficulty:
+-   If have extra time to practice React skills, in the next versions (0.4 onwards) the game will be updated with these ideas (From [here](https://reactjs.org/tutorial/tutorial.html#wrapping-up)to improve game systems that could be made which are listed in order of increasing difficulty:
 
     1.  :white_check_mark: Display the location for each move in the format (col, row) in the move history list.
-    2.  Bold the currently selected item in the move list.
-    3.  Rewrite Board to use two loops to make the squares instead of hardcoding them.
+    2.  :white_check_mark: Bold the currently selected item in the move list.
+    3.  :white_check_mark: Rewrite Board to use two loops to make the squares instead of hardcoding them.
     4.  Add a toggle button that lets you sort the moves in either ascending or descending order.
     5.  When someone wins, highlight the three squares that caused the win.
     6.  When no one wins, display a message about the result being a draw.
@@ -44,3 +44,14 @@ Additional features/ideas reference
 -   Display the location for each move in the format (col, row) in the move history list
 
 ### Version 0.5:
+
+-   Bold the currently selected item in the move list.
+
+### Version 0.6:
+
+-   Rewrite Board to use two loops to make the squares instead of hardcoding them.
+-   Dynamically render a board with custom row and cols
+
+### Version 0.7:
+
+-
