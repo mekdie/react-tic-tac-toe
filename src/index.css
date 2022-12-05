@@ -64,3 +64,13 @@ ul {
     /* position: relative; */
     margin-left: 20px;
 }
+
+@media screen and (max-width: 440px) {
+    .game {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    .game-info {
+        margin-left: 0px;
+    }
+}

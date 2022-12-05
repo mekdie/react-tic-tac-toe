@@ -52,6 +52,7 @@ function App() {
     const [xTurn, setXTurn] = useState(true);
     const [stepNumber, setStepNumber] = useState(0);
     const [positions, setPositions] = useState([]);
+    const [reverse, setReverse] = useState(false);
 
     const currentHistory = history;
     const current = currentHistory[stepNumber];
@@ -135,10 +136,20 @@ function App() {
 
         //like positions += positions + somethingElse
 
-        setPositions((currentPosition) => [
-            ...currentPosition,
+        setPositions(() => [
+            ...positions,
             { row: getLocation(pos).row, col: getLocation(pos).col },
         ]);
+    };
+
+    //reversing the moves
+    const reversePositions = () => {
+        //setting up useState value ways
+        // setReverse((rev) => {
+        //     return !rev;
+        // });
+        // setReverse((rev) => !rev);
+        setReverse(!reverse);
     };
 
     return (
@@ -153,7 +164,13 @@ function App() {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <ol>{moves}</ol>
+                    <br />
+                    <button onClick={reversePositions}>
+                        Reverse move to {reverse ? "Descending" : "Ascending"}
+                    </button>
+                    <p>Moves history:</p>
+                    <ol>{reverse ? moves.reverse() : moves}</ol>{" "}
+                    {/* this needs to be reversed */}
                 </div>
             </div>
         </div>
