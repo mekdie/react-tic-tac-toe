@@ -1,8 +1,8 @@
 # Tic-Tac-Toe Game built with React (with Extensions!)
 
-This project was based on Official React Tutorial by <a href="https://reactjs.org/tutorial/tutorial.html" target="_blank">Reactjs.org</a>. However what make this Mekdie's tic-tac-toe React game unique is that, this project only takes the original tutorial as a mere reference but all code are re-written with functional based components (also customized) and hooks in 2022 instead of the original using class based components. At least this way I could practice my new React skills. Also as a challenge, all extra functionalities and features are added here too including from the official and personal.
+This project was based on Official React Tutorial by [Reactjs.org](https://reactjs.org/tutorial/tutorial.html). However what make this Mekdie's tic-tac-toe React game unique is that, this project only takes the original tutorial as a mere reference but all code are re-written with functional based components (also customized) and hooks in 2022 instead of the original using class based components. At least this way I could practice my new React skills. Also as a challenge, all extra functionalities and features are added here too including from the official and personal.
 
-\*Additional features/ideas (Extensions) <a href="https://reactjs.org/tutorial/tutorial.html#wrapping-up" target="_blank">reference</a>
+\*Additional features/ideas (Extensions) [reference](https://reactjs.org/tutorial/tutorial.html#wrapping-up)
 
 If I have time to improve and increase this project's value, I will build MekdieAI as a computer opponent in this project (TicTacToe game). Wish me luck ^^
 
@@ -10,7 +10,7 @@ Feel free to clone / fork this to use this as your source of learning and improv
 
 I am more than happy to receive any feedbacks if there can be something to be improved/optimized or any bugs found in within
 
-Access the game <a href="https://mekdie.github.io/react-tic-tac-toe" target="_blank">here</a>.
+Access the game [here](https://mekdie.github.io/react-tic-tac-toe).
 
 <!-- built with Github Pages and gh-pages module.  -->
 
