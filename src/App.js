@@ -66,6 +66,9 @@ function App() {
 
     const winner = calculateWinner(current.squares);
 
+    //end of game variable
+    // const endOfGame = !current.squares.includes(null);
+
     //set the winnings squares / line (infinite loops)
     // setWinningSquares(winner.winning);
     // setWinningSquares(() => winner.winning);
@@ -77,7 +80,6 @@ function App() {
 
         //handle draw here
         // console.log(step);
-        console.log("set 2");
         step !== 9 ? setDraw(false) : setDraw(true);
     };
 
@@ -149,7 +151,7 @@ function App() {
         // newSquares[i] = xTurn ? "X" : "O";
 
         // === handle draw here ===
-        // logics: if the step number is 8 and winner still null then it's a draw
+        // logics: if it has reached end of game and winner still null then it's a draw or no one wins then
 
         if (stepNumber === 8 && !winner) {
             setDraw(true);
@@ -204,7 +206,7 @@ function App() {
                     <div>{status}</div>
                     <br />
                     <button onClick={reversePositions}>
-                        Reverse move to {reverse ? "Descending" : "Ascending"}
+                        Reverse moves to {reverse ? "Descending" : "Ascending"}
                     </button>
                     <p>
                         Moves history (click the history below to 'time travel'
