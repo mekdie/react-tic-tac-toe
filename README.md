@@ -1,6 +1,8 @@
-# Tic-Tac-Toe Game built with React
+# Tic-Tac-Toe Game built with React (with additional features / ideas!)
 
 This project was based on Official React Tutorial by [Reactjs.org](https://reactjs.org/tutorial/tutorial.html).
+
+Additional features/ideas reference
 
 ## Version Changelog
 
@@ -29,7 +31,7 @@ This project was based on Official React Tutorial by [Reactjs.org](https://react
 -   Implement Time Travel to undo / travel previous moves
 -   **_\*Bug found: the board is moving around when the next player indicator changes_**
 -   If have extra time to practice React skills, in the next versions (0.4 onwards) the game will be updated with these ideas to improve game systems that could be made which are listed in order of increasing difficulty:
-    1. Display the location for each move in the format (col, row) in the move history list.
+    1. :white_check_mark: Display the location for each move in the format (col, row) in the move history list.
     2. Bold the currently selected item in the move list.
     3. Rewrite Board to use two loops to make the squares instead of hardcoding them.
     4. Add a toggle button that lets you sort the moves in either ascending or descending order.
@@ -37,3 +39,9 @@ This project was based on Official React Tutorial by [Reactjs.org](https://react
     6. When no one wins, display a message about the result being a draw.
 
 ### Version 0.4:
+
+-   Display the location for each move in the format (col, row) in the move history list
+
+### Version 0.5:
+
+-
