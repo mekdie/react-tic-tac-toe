@@ -65,6 +65,9 @@ function App() {
         setXTurn(step % 2 === 0);
     };
 
+    //react styling using javascript object (notice the camelCase of CSS properties)
+    const bold = { fontWeight: "bold" };
+
     const moves = currentHistory.map((step, move) => {
         //move is the current index while step is the value
         //so 0 is the initial move (game start)
@@ -80,7 +83,13 @@ function App() {
         // For each move in the tic-tac-toe game’s history, we create a list item <li> which contains a button <button>. The button has a onClick handler which calls a method called this.jumpTo(). We haven’t implemented the jumpTo() method yet.
         return (
             <li key={move}>
-                <button onClick={() => jumpTo(move)}> {desc}</button>
+                <button
+                    style={move === stepNumber ? bold : {}}
+                    onClick={() => jumpTo(move)}
+                >
+                    {" "}
+                    {desc}
+                </button>
             </li>
         );
     });
