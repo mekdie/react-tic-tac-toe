@@ -43,7 +43,7 @@ Have a good day.
     3.  :white_check_mark: Rewrite Board to use two loops to make the squares instead of hardcoding them.
     4.  :white_check_mark: Add a toggle button that lets you sort the moves in either ascending or descending order.
     5.  :white_check_mark: When someone wins, highlight the three squares that caused the win.
-    6.  When no one wins, display a message about the result being a draw.
+    6.  :white_check_mark: When no one wins, display a message about the result being a draw.
 
 ### Version 0.4:
 

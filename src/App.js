@@ -27,6 +27,7 @@ function App() {
     const [stepNumber, setStepNumber] = useState(0);
     const [positions, setPositions] = useState([]);
     const [reverse, setReverse] = useState(false);
+    const [draw, setDraw] = useState(false);
 
     //function to check the winner
     function calculateWinner(squares) {
@@ -54,9 +55,7 @@ function App() {
                 // squares: show the winner X or O
                 // winnings: the winning squares
             }
-            //highlight the 3 boxes here
         }
-
         //if no winner yet, return nothing
         return null; // or draw -- MIGHT IMPLEMENT DRAW HERE
     }
@@ -75,6 +74,11 @@ function App() {
     const jumpTo = (step) => {
         setStepNumber(step);
         setXTurn(step % 2 === 0);
+
+        //handle draw here
+        // console.log(step);
+        console.log("set 2");
+        step !== 9 ? setDraw(false) : setDraw(true);
     };
 
     //react styling using javascript object (notice the camelCase of CSS properties)
@@ -118,6 +122,8 @@ function App() {
         //in short: can't update the state inside render or not inside function call
 
         // setWinningSquares(() => [...winningSquares, 1, 2, 3]);
+    } else if (draw) {
+        status = "DRAW !";
     } else {
         status = "Next Player: " + (xTurn ? "X" : "O"); //this is causing the board to move around
     }
@@ -141,6 +147,13 @@ function App() {
         // //immutability by creating a copy of squares array
         // const newSquares = squares.slice(); //slice is a function to take portions of an array, in this case it takes all current array inside squares state
         // newSquares[i] = xTurn ? "X" : "O";
+
+        // === handle draw here ===
+        // logics: if the step number is 8 and winner still null then it's a draw
+
+        if (stepNumber === 8 && !winner) {
+            setDraw(true);
+        }
 
         //return early by ignoring click if someone has won the game
         if (calculateWinner(squares) || squares[pos]) {
