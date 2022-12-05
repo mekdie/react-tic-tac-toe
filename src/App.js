@@ -3,32 +3,6 @@ import "./App.css";
 import Board from "./components/Board";
 import { useState } from "react";
 
-function calculateWinner(squares) {
-    //brute forcing or hard coding the winning lines
-    const lines = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
-    ];
-
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
-        if (
-            squares[a] &&
-            squares[a] === squares[b] &&
-            squares[a] === squares[c]
-        ) {
-            return squares[a]; // show the winner X or O
-        }
-    }
-    return null; // or draw
-}
-
 function getLocation(location) {
     //brute forcing  manually for the tictactoe 3x3 board
     const rowCol = [
@@ -54,11 +28,48 @@ function App() {
     const [positions, setPositions] = useState([]);
     const [reverse, setReverse] = useState(false);
 
+    //function to check the winner
+    function calculateWinner(squares) {
+        //brute forcing or hard coding the winning lines
+        const lines = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ];
+
+        for (let i = 0; i < lines.length; i++) {
+            const [a, b, c] = lines[i];
+            if (
+                squares[a] &&
+                squares[a] === squares[b] &&
+                squares[a] === squares[c]
+            ) {
+                // console.log([a, b, c]);
+                return { player: squares[a], winning: [a, b, c] };
+                // squares: show the winner X or O
+                // winnings: the winning squares
+            }
+            //highlight the 3 boxes here
+        }
+
+        //if no winner yet, return nothing
+        return null; // or draw -- MIGHT IMPLEMENT DRAW HERE
+    }
+
     const currentHistory = history;
     const current = currentHistory[stepNumber];
     // const current = currentHistory[stepNumber];
 
     const winner = calculateWinner(current.squares);
+
+    //set the winnings squares / line (infinite loops)
+    // setWinningSquares(winner.winning);
+    // setWinningSquares(() => winner.winning);
 
     //jump to moves
     const jumpTo = (step) => {
@@ -79,7 +90,7 @@ function App() {
               ` (row: ${positions[move - 1].row}, col: ${
                   positions[move - 1].col
               })`
-            : "Go to game start";
+            : "Restart Game";
 
         // For each move in the tic-tac-toe game’s history, we create a list item <li> which contains a button <button>. The button has a onClick handler which calls a method called this.jumpTo(). We haven’t implemented the jumpTo() method yet.
         return (
@@ -96,8 +107,17 @@ function App() {
     });
 
     let status;
+
+    //if there is an object winner (not null)
     if (winner) {
-        status = "Winner: " + winner;
+        status = "Winner: " + winner.player;
+
+        // ARE NOT ABLE TO DO THIS, caught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop. NEED TO FIND OUT
+
+        // reason: https://alexsidorenko.com/blog/react-infinite-loop/
+        //in short: can't update the state inside render or not inside function call
+
+        // setWinningSquares(() => [...winningSquares, 1, 2, 3]);
     } else {
         status = "Next Player: " + (xTurn ? "X" : "O"); //this is causing the board to move around
     }
@@ -144,7 +164,8 @@ function App() {
 
     //reversing the moves
     const reversePositions = () => {
-        //setting up useState value ways
+        //multiple methods on setting up useState value
+
         // setReverse((rev) => {
         //     return !rev;
         // });
@@ -152,12 +173,16 @@ function App() {
         setReverse(!reverse);
     };
 
+    //couldn't do this is because in the early game, there are no actually winner.winning
+    // console.log(winner.winning);
+
     return (
         <div className="container">
             {/* <h1>TicTacToe</h1> */}
             <div className="game">
                 <div className="game-board">
                     <Board
+                        winnings={winner ? winner.winning : []}
                         squares={current.squares}
                         onClick={(i) => handleClick(i)}
                     />
@@ -168,7 +193,10 @@ function App() {
                     <button onClick={reversePositions}>
                         Reverse move to {reverse ? "Descending" : "Ascending"}
                     </button>
-                    <p>Moves history:</p>
+                    <p>
+                        Moves history (click the history below to 'time travel'
+                        or view previous move):
+                    </p>
                     <ol>{reverse ? moves.reverse() : moves}</ol>{" "}
                     {/* this needs to be reversed */}
                 </div>

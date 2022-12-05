@@ -56,6 +56,9 @@ ul {
     /* margin: auto; */
     display: flex;
     flex-direction: row;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
     /* width: 100%;
     justify-content: center; */
 }
@@ -68,9 +71,22 @@ ul {
 @media screen and (max-width: 440px) {
     .game {
         flex-direction: column;
-        row-gap: 10px;
+        row-gap: 10px; /* gap between row / div */
     }
     .game-info {
         margin-left: 0px;
+        margin: 0 auto;
+        text-align: center;
     }
+    .game-board {
+        margin: 0 auto;
+    }
+}
+
+.game-board {
+    min-width: 175px;
+}
+
+button:hover {
+    cursor: pointer;
 }

@@ -8,10 +8,20 @@ import React from "react";
 // const btnClick = () => {
 //     console.log("click");
 // };
-const Square = (props) => {
+
+const winnerSquare = {
+    backgroundColor: "yellow",
+};
+
+const Square = ({ onClick, value, winnings, index }) => {
     return (
-        <button className="square" onClick={props.onClick}>
-            {props.value}
+        <button
+            // to check if the winnings array have the value that caused the win, if yes highlight the square
+            style={winnings.includes(index) ? winnerSquare : {}}
+            className="square"
+            onClick={onClick}
+        >
+            {value}
         </button>
     );
 };
