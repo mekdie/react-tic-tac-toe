@@ -34,7 +34,7 @@ const Game = () => {
                         Moves history (click the history below to 'time travel'
                         or view previous move):
                     </p>
-                    <ol>{reverse ? moves.reverse() : moves}</ol>
+                    <ol>{reverse ? moves.slice().reverse() : moves}</ol>
                     {/* this needs to be reversed */}
                 </div>
             </div>

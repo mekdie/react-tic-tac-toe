@@ -87,3 +87,5 @@ Access the game [here](https://mekdie.github.io/react-tic-tac-toe).
 -   Bug needs to be fixed in the next version: can't ascend or descend
 
 ### Version 1.0.2:
+
+-   Fixed the ascend and descend by adding slice() when reversing to the original array is not modified
