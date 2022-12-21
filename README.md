@@ -80,3 +80,10 @@ Access the game [here](https://mekdie.github.io/react-tic-tac-toe).
 
 -   Improved code flexibility for future use
 -   Going live for version alpha 1.0 for basic and 6 original extra features implemented
+
+### Version 1.0.1 (Use context instead of props for app.js):
+
+-   Optimize the code to use contextAPI and leave some of the props for Board and Square
+-   Bug needs to be fixed in the next version: can't ascend or descend
+
+### Version 1.0.2:
